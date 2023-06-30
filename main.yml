@@ -1,0 +1,15 @@
+---
+- name: Ansible Base
+  hosts: all
+  become: true
+
+  handlers:
+    - name: Import handlers
+      ansible.builtin.import_tasks: handlers/main.yml
+
+  tasks:
+    - import_tasks: tasks/system_packages.yml
+    - import_tasks: tasks/hostname.yml
+    - import_tasks: tasks/timezone.yml
+    - import_tasks: tasks/sshd_config.yml
+    - import_tasks: tasks/ssh_keys.yml

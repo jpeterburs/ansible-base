@@ -1,0 +1,6 @@
+---
+europe:
+  hosts:
+    eu-01:
+      ansible_host: 10.123.45.67
+      ansible_user: root

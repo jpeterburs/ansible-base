@@ -1,0 +1,4 @@
+---
+- name: Set timezone according to group
+  timezone:
+    name: "{{ timezone | default('Europe/Berlin') }}"
