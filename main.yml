@@ -8,8 +8,13 @@
       ansible.builtin.import_tasks: handlers/main.yml
 
   tasks:
-    - import_tasks: tasks/system_packages.yml
-    - import_tasks: tasks/hostname.yml
-    - import_tasks: tasks/timezone.yml
-    - import_tasks: tasks/sshd_config.yml
-    - import_tasks: tasks/ssh_keys.yml
+    - name: Install common system packages like htop, ncdu and vim
+      ansible.builtin.import_tasks: tasks/system_packages.yml
+    - name: Configure hostname to match inventory
+      ansible.builtin.import_tasks: tasks/hostname.yml
+    - name: Set timezone according to iventory group
+      ansible.builtin.import_tasks: tasks/timezone.yml
+    - name: Harden SSHD config against the scary internet
+      ansible.builtin.import_tasks: tasks/sshd_config.yml
+    - name: Upload ssh_keys in files/ssh_keys/*.pub
+      ansible.builtin.import_tasks: tasks/ssh_keys.yml
