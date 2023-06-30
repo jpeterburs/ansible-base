@@ -2,5 +2,8 @@
 - name: Upload public keys to authorized_keys
   authorized_key:
     user: "{{ ansible_user | default('root') }}"
-    key: "{% for key in lookup('fileglob', '{{ playbook_dir }}/files/ssh_keys/*.pub').split(',') %}{{ lookup('file', key) ~ '\n'}}{% endfor %}"
-    exclusive: yes
+    key: >
+      {% for key in lookup('fileglob', '{{ playbook_dir }}/files/ssh_keys/*.pub').split(',') %}
+        {{ lookup('file', key) ~ '\n'}}
+      {% endfor %}
+    exclusive: true
