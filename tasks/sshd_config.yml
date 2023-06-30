@@ -1,6 +1,6 @@
 ---
 - name: Configure SSHD hardening
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
     regex: "{{ item.regexp }}"
     line: "{{ item.line }}"
